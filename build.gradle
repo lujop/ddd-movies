@@ -1,13 +1,26 @@
 plugins {
-    id 'java'
+    id "java"
     id "org.sonarqube" version "2.8"
 }
 
 allprojects {
+    apply plugin: 'jacoco'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_13
+        targetCompatibility = JavaVersion.VERSION_13
+    }
+
     repositories {
         mavenLocal()
         mavenCentral()
     }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group 'cat.joanpujol'
+    version '1.0.0-SNAPSHOT'
 
     compileJava {
         options.encoding = 'UTF-8'
@@ -17,20 +30,34 @@ allprojects {
     compileTestJava {
         options.encoding = 'UTF-8'
     }
+}
 
-    java {
-        sourceCompatibility = JavaVersion.VERSION_13
-        targetCompatibility = JavaVersion.VERSION_13
+//Aggregate report for all projects (needed by Sonarcloud)
+task codeCoverageReport(type: JacocoReport) {
+
+    // Gather execution data from all subprojects
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    // Add all relevant sourcesets from the subprojects
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
     }
 }
 
-subprojects {
-    group 'cat.joanpujol'
-    version '1.0.0-SNAPSHOT'
+// always run the tests before generating the report
+codeCoverageReport.dependsOn {
+    subprojects*.check
 }
 
 sonarqube {
     properties {
         property "sonar.projectKey", "lujop_ddd-movies"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${rootDir}/build/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
     }
 }
