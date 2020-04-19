@@ -12,7 +12,8 @@ addons:
 script:
   - ./gradlew assemble
   - ./gradlew check
-  - ./gradlew codeCoverageReport
+  - find build
+  - ./gradlew codeCoverageReport --info
   - ./gradlew sonarqube
 
 before_cache:
