@@ -10,7 +10,6 @@ addons:
     token:
       secure: "HIki+h+iX4RkBcrnQb89CAkpNS3/6bsKXajAJficXZTQZzawKCvLDyhWjIyHnwDwgJAssgIKi4Q3VpyqrXS4StYaz4kaD0WjmSieeEimdSh4PVhOE38ODsSN2zqzsbw5p59N7H1JtXl24mWDZqvnKUwDWgLppKOmwxpRC7FM5iRoIt9NsW7GYC2pd8OTc9WkRZFALm77VIaTyiA8g/wtsNAP/v8wlLhyXqSEj3ptZClAfOYvZEEOeMrjKMT+cMxhk/N7yXOns+4FTyBZnZ7hR9/3ykwJCQFC6W3lRcckLn6xOWq8Bp6pOaORB7qKO1nOSmrgCoj+zssTd7tlWFd5VvDrgBllOdK2zO7Cj7rZL9YOoaZerfOjCwE4XnrFD55n5ZbknQnB99Gr+3Iudhfj+am7IkJiXvUQCMddjBS85L+YFokP5UlLf/QX4cBRQAZvrk/kJLg7ETRy0IWdAZkel47/8q4Yo4KpJ5k0nDkN8Gzn6HSLJ+Xo5r/wWL12GG9Rakk+tNyXLuO/xMxhE4ndfUUKo7UcCY8/ErHNGpUeLAIV/uGgC2pgKFrA2n2CSz7oQZIqOMICJ1GaEotSvw9Vaur9q/0cCMMPqtIFGZAo541MkmYjJAjhEIm6Po05GIAZ8PpejUcTHZA9GiDGXr3pNS1RXRUgOcZ4+KJozGu3f20="
 script:
-  - ./gradlew assemble
   - ./gradlew codeCoverageReport --info
   - find build
   - ./gradlew sonarqube
