@@ -51,3 +51,4 @@ gen
 imdb-import/build
 movies-app/build
 localfiles
+.java-version
