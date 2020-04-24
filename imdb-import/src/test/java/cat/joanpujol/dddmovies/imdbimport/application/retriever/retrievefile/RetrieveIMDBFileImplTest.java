@@ -1,9 +1,7 @@
-package cat.joanpujol.dddmovies.imdbimport.application.retrievefile;
+package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import cat.joanpujol.dddmovies.imdbimport.application.retrievefile.impl.RetrieveIMDBFileHttpClientMock;
-import cat.joanpujol.dddmovies.imdbimport.application.retrievefile.impl.RetrieveIMDBFileImpl;
 import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +20,7 @@ class RetrieveIMDBFileImplTest {
 
   @DisplayName("Given main TITLE_BASICS file type")
   @Nested
-  class TitleBasics {
+  class TitleNameBasics {
     @Test
     public void testSomeContentIsReturned() throws IOException {
       var content = instance.retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS);

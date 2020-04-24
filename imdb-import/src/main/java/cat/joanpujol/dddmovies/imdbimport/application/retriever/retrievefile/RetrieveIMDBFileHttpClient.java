@@ -1,6 +1,5 @@
-package cat.joanpujol.dddmovies.imdbimport.application.retrievefile.impl;
+package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
-import cat.joanpujol.dddmovies.imdbimport.application.retrievefile.RetrieveIMDBFile;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.InputStream;
 import javax.ws.rs.GET;

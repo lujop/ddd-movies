@@ -1,4 +1,4 @@
-package cat.joanpujol.dddmovies.imdbimport.application.retrievefile;
+package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.IOException;
