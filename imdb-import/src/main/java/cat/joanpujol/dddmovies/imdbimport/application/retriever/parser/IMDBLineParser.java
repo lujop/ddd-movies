@@ -24,7 +24,7 @@ class IMDBLineParser {
 
   /**
    * Return line column value as given type. Null versions return null for blank strings and '\N'
-   **/
+   */
   public static class ParsedLine {
     private final @NonNull String[] line;
 

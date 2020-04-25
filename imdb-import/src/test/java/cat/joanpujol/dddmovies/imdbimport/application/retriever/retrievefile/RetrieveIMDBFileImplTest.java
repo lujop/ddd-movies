@@ -20,7 +20,7 @@ class RetrieveIMDBFileImplTest {
 
   @DisplayName("Given main TITLE_BASICS file type")
   @Nested
-  class TitleNameBasics {
+  class TitleBasics {
     @Test
     public void testSomeContentIsReturned() throws IOException {
       var content = instance.retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS);

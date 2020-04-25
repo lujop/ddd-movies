@@ -9,9 +9,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 @ApplicationScoped
+@Default
 public class RetrieveIMDBFileImpl implements RetrieveIMDBFile {
   private final RetrieveIMDBFileHttpClient httpClient;
 

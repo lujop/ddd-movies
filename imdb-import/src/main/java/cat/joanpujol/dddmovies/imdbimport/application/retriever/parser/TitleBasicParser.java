@@ -9,7 +9,7 @@ import edu.umd.cs.findbugs.annotations.NonNull;
 public class TitleBasicParser {
 
   @NonNull
-  TitleBasic parse(@NonNull String line) {
+  public TitleBasic parse(@NonNull String line) {
     ParsedLine parsedLine = IMDBLineParser.parse(line, 9);
 
     return ImmutableTitleBasic.builder()

@@ -1,6 +1,5 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.beans;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import java.util.Set;
 import org.immutables.value.Value;
@@ -16,12 +15,21 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface TitleBasic {
   String id();
+
   String type();
+
   String primaryTitle();
+
   String originalTitle();
+
   boolean adult();
+
   Integer startYear();
+
+  @Nullable
   Integer endYear();
+
   Integer runtimeMinutes();
+
   Set<String> genres();
 }
