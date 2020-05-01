@@ -1,19 +1,16 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
-import cat.joanpujol.dddmovies.imdbimport.infrastructure.annotations.Mock;
-import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.InputStream;
-import java.util.Objects;
-import javax.enterprise.inject.Alternative;
+import org.checkerframework.checker.nullness.NullnessUtil;
 
-@Mock
-@Alternative
 public class RetrieveIMDBFileHttpClientMock implements RetrieveIMDBFileHttpClient {
   @Override
-  public @NonNull InputStream getFile(@NonNull RetrieveIMDBFile.Type type) {
-    return Objects.requireNonNull(
+  public InputStream getFile(RetrieveIMDBFile.Type type) {
+    @SuppressWarnings("nullable")
+    var resourceAsStream =
         Thread.currentThread()
             .getContextClassLoader()
-            .getResourceAsStream("mockdata/retrievefile/" + type.getFileName()));
+            .getResourceAsStream("mockdata/retrievefile/" + type.getFileName());
+    return NullnessUtil.castNonNull(resourceAsStream);
   }
 }

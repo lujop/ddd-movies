@@ -1,23 +1,22 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.parser;
 
-import cat.joanpujol.dddmovies.imdbimport.application.error.InvallidDataException;
-import edu.umd.cs.findbugs.annotations.NonNull;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import cat.joanpujol.dddmovies.imdbimport.application.error.InvalidDataException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 class IMDBLineParser {
 
-  static @NonNull ParsedLine parse(@NonNull String line) {
+  static ParsedLine parse(String line) {
     return parse(line, -1);
   }
 
-  static ParsedLine parse(@NonNull String line, int expectedColumns) {
+  static ParsedLine parse(String line, int expectedColumns) {
     String[] columns = line.split("\t");
     if (expectedColumns != -1 && columns.length != expectedColumns)
-      throw new InvallidDataException(
+      throw new InvalidDataException(
           "Line has " + columns.length + " and " + expectedColumns + " were expected: " + line);
     return new ParsedLine(columns);
   }
@@ -26,15 +25,15 @@ class IMDBLineParser {
    * Return line column value as given type. Null versions return null for blank strings and '\N'
    */
   public static class ParsedLine {
-    private final @NonNull String[] line;
+    private final String[] line;
 
-    public ParsedLine(@NonNull String[] line) {
+    public ParsedLine(String[] line) {
       this.line = line;
     }
 
-    public @NonNull String getString(int column) {
+    public String getString(int column) {
       if (column >= line.length)
-        throw new InvallidDataException(
+        throw new InvalidDataException(
             "Line doesn't have " + column + " columns. Line is " + Arrays.toString(line));
       return line[column];
     }
@@ -45,19 +44,19 @@ class IMDBLineParser {
       else return null;
     }
 
-    public @NonNull Integer getInteger(int column) {
+    public Integer getInteger(int column) {
       var value = getNullableInteger(column);
       if (value != null) return value;
       else
-        throw new InvallidDataException("Error parsing column " + column + " as non blank number");
+        throw new InvalidDataException("Error parsing column " + column + " as non blank number");
     }
 
-    public @NonNull Boolean getBoolean(int column) {
+    public Boolean getBoolean(int column) {
       var value = getNullableString(column);
       if (value != null) {
         return value.equals("1");
       } else {
-        throw new InvallidDataException("Error parsing column " + column + " as non blank boolean");
+        throw new InvalidDataException("Error parsing column " + column + " as non blank boolean");
       }
     }
 
@@ -67,7 +66,7 @@ class IMDBLineParser {
         try {
           return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-          throw new InvallidDataException(
+          throw new InvalidDataException(
               "Error parsing column " + column + " as number. Value is " + value, e);
         }
       } else {
@@ -75,7 +74,7 @@ class IMDBLineParser {
       }
     }
 
-    public @NonNull Set<String> getStringCommaSeparatedSet(int column) {
+    public Set<String> getStringCommaSeparatedSet(int column) {
       var value = getString(column);
       String[] values = value.split(",", -1);
       var set = new LinkedHashSet<String>();

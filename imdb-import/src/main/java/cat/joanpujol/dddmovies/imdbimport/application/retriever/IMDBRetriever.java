@@ -18,7 +18,10 @@ public class IMDBRetriever {
   }
 
   public Stream<TitleBasic> retrieveTitleBasics() throws IOException {
-    Stream<String> lineStream = retrieveFile.retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS);
+    Stream<String> lineStream =
+        retrieveFile
+            .retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS)
+            .skip(1); // Ignore file header;
     TitleBasicParser parser = new TitleBasicParser();
     return lineStream.map(parser::parse);
   }

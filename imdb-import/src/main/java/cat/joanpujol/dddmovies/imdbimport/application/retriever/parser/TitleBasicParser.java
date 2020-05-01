@@ -3,13 +3,11 @@ package cat.joanpujol.dddmovies.imdbimport.application.retriever.parser;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.ImmutableTitleBasic;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.TitleBasic;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.parser.IMDBLineParser.ParsedLine;
-import edu.umd.cs.findbugs.annotations.NonNull;
 
 /** Parse IMDB title.basic line register */
 public class TitleBasicParser {
 
-  @NonNull
-  public TitleBasic parse(@NonNull String line) {
+  public TitleBasic parse(String line) {
     ParsedLine parsedLine = IMDBLineParser.parse(line, 9);
 
     return ImmutableTitleBasic.builder()

@@ -1,7 +1,7 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.beans;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import java.util.Set;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.immutables.value.Value;
 
 /**
