@@ -1,4 +1,4 @@
-package cat.joanpujol.dddmovies.imdbimport.infrastructure;
+package cat.joanpujol.dddmovies.imdbimport.infrastructure.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

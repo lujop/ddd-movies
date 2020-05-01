@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "org.sonarqube" version "2.8"
     id "com.diffplug.gradle.spotless" version "3.28.1" apply false
+    id 'org.checkerframework' version '0.5.0' apply false
 }
 
 
@@ -9,8 +10,8 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
     java {
-        sourceCompatibility = JavaVersion.VERSION_13
-        targetCompatibility = JavaVersion.VERSION_13
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     repositories {
@@ -24,9 +25,12 @@ subprojects {
     version '1.0.0-SNAPSHOT'
 
     apply plugin: 'com.diffplug.gradle.spotless'
+    apply plugin: 'java'
+    apply plugin: 'org.checkerframework'
     compileJava {
         options.encoding = 'UTF-8'
         options.compilerArgs << '-parameters'
+        options.annotationProcessorPath = configurations.annotationProcessor
     }
 
     compileTestJava {
@@ -34,16 +38,36 @@ subprojects {
     }
 
     dependencies {
-        implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.0.2'
         testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.15.1'
+
+        checkerFramework 'org.checkerframework:checker:3.3.0'
+        implementation 'org.checkerframework:checker-qual:3.3.0'
     }
 
     spotless {
         java {
             googleJavaFormat('1.7')
             removeUnusedImports()
-
         }
+    }
+
+    checkerFramework {
+        checkers = [
+                'org.checkerframework.checker.nullness.NullnessChecker',
+                'org.checkerframework.checker.units.UnitsChecker'
+        ]
+        extraJavacArgs = [
+                '-Werror',
+                '-AsuppressWarnings=uninitialized',
+                '-AskipDefs=Test$' //Dont check tests
+        ]
+    }
+
+    tasks.withType(JavaCompile) {
+        doFirst {
+            println "Args for for $name are $options.allCompilerArgs"
+        }
+        logging.setLevel(LogLevel.DEBUG)
     }
 }
 

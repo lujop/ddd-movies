@@ -3,7 +3,7 @@ install: true
 
 os: linux
 dist: xenial
-jdk: oraclejdk13
+jdk: oraclejdk11
 addons:
   sonarcloud:
     organization: "lujop"

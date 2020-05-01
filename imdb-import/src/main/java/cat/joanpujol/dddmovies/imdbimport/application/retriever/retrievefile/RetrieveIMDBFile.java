@@ -1,13 +1,11 @@
-package cat.joanpujol.dddmovies.imdbimport.application.retrievefile;
+package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.IOException;
 import java.util.stream.Stream;
 
 public interface RetrieveIMDBFile {
   /** Returns a line stream with the content of the given file type */
-  @NonNull
-  Stream<String> retrieveFile(@NonNull Type type) throws IOException;
+  Stream<String> retrieveFile(Type type) throws IOException;
 
   /** Types of data files provided by IMDB (https://www.imdb.com/interfaces/) */
   enum Type {
@@ -28,11 +26,11 @@ public interface RetrieveIMDBFile {
 
     private final String fileName;
 
-    Type(@NonNull String fileName) {
+    Type(String fileName) {
       this.fileName = fileName;
     }
 
-    public @NonNull String getFileName() {
+    public String getFileName() {
       return fileName;
     }
   }
