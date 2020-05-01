@@ -9,6 +9,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 class IMDBLineParser {
 
+  private IMDBLineParser() {}
+
   static ParsedLine parse(String line) {
     return parse(line, -1);
   }
@@ -48,7 +50,8 @@ class IMDBLineParser {
       var value = getNullableInteger(column);
       if (value != null) return value;
       else
-        throw new InvalidDataException("Error parsing column " + column + " as non blank number");
+        throw new InvalidDataException(
+            String.format("Error parsing column %d as non blank number", column));
     }
 
     public Boolean getBoolean(int column) {
@@ -56,7 +59,8 @@ class IMDBLineParser {
       if (value != null) {
         return value.equals("1");
       } else {
-        throw new InvalidDataException("Error parsing column " + column + " as non blank boolean");
+        throw new InvalidDataException(
+            String.format("Error parsing column %d as non blank boolean", column));
       }
     }
 
@@ -67,7 +71,7 @@ class IMDBLineParser {
           return Integer.parseInt(value);
         } catch (NumberFormatException e) {
           throw new InvalidDataException(
-              "Error parsing column " + column + " as number. Value is " + value, e);
+              String.format("Error parsing column %d as number. Value is %s", column, value), e);
         }
       } else {
         return null;

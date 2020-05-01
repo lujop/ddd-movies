@@ -22,11 +22,11 @@ public interface Message {
     return ImmutableMessage.builder();
   }
 
-  public static <T> Message of(String message) {
+  public static Message of(String message) {
     return ImmutableMessage.of(message);
   }
 
-  public static <T> Message of(String message, Severity severity) {
+  public static Message of(String message, Severity severity) {
     return builder().message(message).severity(severity).build();
   }
 }

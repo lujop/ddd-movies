@@ -50,7 +50,7 @@ class TitleTest {
   public void endYearCantBeSetNull() {
     pulpFiction.setEndYear(null);
 
-    assertThat(pulpFiction.getEndYear()).isNull(););
+    assertThat(pulpFiction.getEndYear()).isNull();
   }
 
   @Test

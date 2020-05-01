@@ -1,18 +1,18 @@
 package cat.joanpujol.dddmovies.imdbimport.domain;
 
 public class Id extends BaseValueObject {
-  private final String id;
+  private final String value;
 
-  public Id(String id) {
-    this.id = id;
+  public Id(String value) {
+    this.value = value;
   }
 
-  public String getId() {
-    return id;
+  public String getValue() {
+    return value;
   }
 
   @Override
   public Object[] getEqualityValues() {
-    return new Object[] {id};
+    return new Object[] {value};
   }
 }

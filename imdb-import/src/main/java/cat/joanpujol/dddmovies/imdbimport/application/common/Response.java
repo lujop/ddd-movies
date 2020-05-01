@@ -23,7 +23,7 @@ public interface Response<T> {
 
   public static <T> Response<T> of(boolean correct, T content, Message message) {
     return ImmutableResponse.<T>builder()
-        .isCorrect(true)
+        .isCorrect(correct)
         .content(content)
         .addMessages(message)
         .build();
