@@ -14,7 +14,6 @@ public class UpdateTitleBasics {
 
   @Nullable
   Response<Void> update(UpdateTitleBasicsRequest request) throws IOException {
-    var stream = imdbRetriever.retrieveTitleBasics();
     return null;
   }
 }

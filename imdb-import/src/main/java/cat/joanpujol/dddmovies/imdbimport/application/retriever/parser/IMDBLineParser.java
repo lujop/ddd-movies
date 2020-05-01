@@ -34,15 +34,20 @@ class IMDBLineParser {
     }
 
     public String getString(int column) {
-      if (column >= line.length)
+      var value = getNullableString(column);
+      if (value != null) return value;
+      else
         throw new InvalidDataException(
-            "Line doesn't have " + column + " columns. Line is " + Arrays.toString(line));
-      return line[column];
+            String.format("Error parsing column %d as non blank string", column));
     }
 
     public @Nullable String getNullableString(int column) {
-      var value = getString(column);
-      if (!value.isBlank() && !value.equals("\\N")) return value;
+      if (column >= line.length)
+        throw new InvalidDataException(
+            "Line doesn't have " + column + " columns. Line is " + Arrays.toString(line));
+      var value = line[column];
+
+      if (!value.isBlank() && !"\\N".equals(value)) return value;
       else return null;
     }
 

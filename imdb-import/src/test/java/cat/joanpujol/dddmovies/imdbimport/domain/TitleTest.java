@@ -68,7 +68,8 @@ class TitleTest {
   @Test
   public void startYearCantBeSetToAnyYearIfEndYearIfNull() {
     pulpFiction.setEndYear(null);
-
     pulpFiction.setStartYear(Year.of(3000));
+
+    assertThat(pulpFiction.getStartYear()).isEqualTo(Year.of(3000));
   }
 }
