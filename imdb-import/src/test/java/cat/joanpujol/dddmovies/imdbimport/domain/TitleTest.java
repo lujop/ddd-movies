@@ -42,7 +42,15 @@ class TitleTest {
   @ValueSource(ints = {1994, 1995})
   public void endYearCantBeSet(int year) {
     pulpFiction.setEndYear(Year.of(year));
+
     assertThat(pulpFiction.getEndYear()).isEqualTo(Year.of(year));
+  }
+
+  @Test
+  public void endYearCantBeSetNull() {
+    pulpFiction.setEndYear(null);
+
+    assertThat(pulpFiction.getEndYear()).isNull(););
   }
 
   @Test
@@ -51,8 +59,16 @@ class TitleTest {
   }
 
   @Test
-  public void startYearCantBeAfterEndYear() {
+  public void startYearCantBeSetAfterEndYear() {
     pulpFiction.setEndYear(Year.of(1995));
+
     assertThatIllegalArgumentException().isThrownBy(() -> pulpFiction.setStartYear(Year.of(1996)));
+  }
+
+  @Test
+  public void startYearCantBeSetToAnyYearIfEndYearIfNull() {
+    pulpFiction.setEndYear(null);
+
+    pulpFiction.setStartYear(Year.of(3000));
   }
 }
