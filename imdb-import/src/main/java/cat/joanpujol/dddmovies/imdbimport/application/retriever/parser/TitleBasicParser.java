@@ -3,7 +3,6 @@ package cat.joanpujol.dddmovies.imdbimport.application.retriever.parser;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.ImmutableTitleBasic;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.TitleBasic;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.parser.IMDBLineParser.ParsedLine;
-import java.util.Collections;
 import java.util.Set;
 
 /** Parse IMDB title.basic line register */
@@ -15,8 +14,9 @@ public class TitleBasicParser implements IMDBParser<TitleBasic> {
 
     Set<String> genresString = parsedLine.getStringCommaSeparatedSet(8);
     Integer runtimeMinutes = parsedLine.getNullableInteger(7);
-    if (runtimeMinutes != null && runtimeMinutes == 0) // Zero is considered as no value
-    runtimeMinutes = null;
+    if (runtimeMinutes != null && runtimeMinutes == 0) { // Zero is considered as no value
+      runtimeMinutes = null;
+    }
     return ImmutableTitleBasic.builder()
         .id(parsedLine.getString(0))
         .type(parsedLine.getString(1))
@@ -26,7 +26,7 @@ public class TitleBasicParser implements IMDBParser<TitleBasic> {
         .startYear(parsedLine.getInteger(5))
         .endYear(parsedLine.getNullableInteger(6))
         .runtimeMinutes(runtimeMinutes)
-        .genres(genresString != null ? genresString : Collections.emptySet())
+        .genres(genresString)
         .build();
   }
 }

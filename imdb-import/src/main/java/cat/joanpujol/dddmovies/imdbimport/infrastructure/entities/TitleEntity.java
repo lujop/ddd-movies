@@ -12,7 +12,7 @@ public class TitleEntity {
   private boolean adult;
   private Integer startYear;
   private @Nullable Integer endYear;
-  private Integer runtimeDuration;
+  private @Nullable Integer runtimeDuration;
   private List<String> genres = new ArrayList<>();
 
   public String getId() {
@@ -22,8 +22,6 @@ public class TitleEntity {
   public void setId(String id) {
     this.id = id;
   }
-
-  public TitleEntity() {}
 
   public String getMainTitle() {
     return mainTitle;
@@ -65,11 +63,11 @@ public class TitleEntity {
     this.endYear = endYear;
   }
 
-  public Integer getRuntimeDuration() {
+  public @Nullable Integer getRuntimeDuration() {
     return runtimeDuration;
   }
 
-  public void setRuntimeDuration(Integer runtimeDuration) {
+  public void setRuntimeDuration(@Nullable Integer runtimeDuration) {
     this.runtimeDuration = runtimeDuration;
   }
 

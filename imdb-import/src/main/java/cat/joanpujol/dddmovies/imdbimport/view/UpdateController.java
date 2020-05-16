@@ -19,7 +19,7 @@ public class UpdateController {
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   public String update() throws IOException {
-    Response response =
+    Response<Void> response =
         updateTitleBasics.update(ImmutableUpdateTitleBasicsRequest.builder().build());
     return response.toString();
   }

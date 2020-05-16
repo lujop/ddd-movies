@@ -31,7 +31,7 @@ public class TitleEntityMapper {
   }
 
   private List<String> genresToEntity(Genres genres) {
-    return genres.getList().stream().map(g -> g.getName()).collect(Collectors.toList());
+    return genres.getList().stream().map(Genre::getName).collect(Collectors.toList());
   }
 
   public Title toDomain(TitleEntity entity) {

@@ -26,7 +26,6 @@ public final class Title extends BaseEntity {
     this.originalTitle = originalTitle;
     this.adult = adult;
     this.startYear = startYear;
-    this.runtimeDuration = runtimeDuration;
     this.genres = genres;
   }
 

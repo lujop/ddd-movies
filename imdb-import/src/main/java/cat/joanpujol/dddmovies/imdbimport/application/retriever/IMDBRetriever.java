@@ -44,7 +44,7 @@ public class IMDBRetriever {
     }
 
     TitleBasicParser parser = new TitleBasicParser();
-    return new IMDBRetrieveOperation<TitleBasic>(lineStream, parser);
+    return new IMDBRetrieveOperation<>(lineStream, parser);
   }
 
   public static final class IMDBRetrieveOperation<T> {
@@ -63,7 +63,7 @@ public class IMDBRetriever {
 
     private final boolean filterIncorrect(
         @UnderInitialization(Object.class) IMDBRetrieveOperation<T> this,
-        ParsedResult parsedResult) {
+        ParsedResult<T> parsedResult) {
       boolean correct = parsedResult.isCorrect();
       if (correct) {
         correctCount++;
