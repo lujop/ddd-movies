@@ -1,5 +1,6 @@
 package cat.joanpujol.dddmovies.imdbimport.domain;
 
+import com.google.common.base.MoreObjects;
 import java.util.Objects;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -26,5 +27,10 @@ public class BaseEntity {
   @Override
   public int hashCode() {
     return Objects.hash(id);
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this).add("id", getId()).toString();
   }
 }

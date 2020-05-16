@@ -1,6 +1,7 @@
 package cat.joanpujol.dddmovies.imdbimport.application.common;
 
 import java.util.List;
+import javax.annotation.Nullable;
 import org.immutables.value.Value;
 
 @Value.Immutable
@@ -9,6 +10,7 @@ public interface Response<T> {
   boolean isCorrect();
 
   @Value.Parameter(order = 2)
+  @Nullable
   T content();
 
   List<Message> messages();

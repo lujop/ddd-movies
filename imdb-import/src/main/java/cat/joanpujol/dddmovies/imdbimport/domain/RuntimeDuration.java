@@ -11,7 +11,7 @@ public class RuntimeDuration extends BaseValueObject {
     this.duration = duration;
   }
 
-  public Duration get() {
+  public Duration getDuration() {
     return duration;
   }
 

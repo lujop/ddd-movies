@@ -1,5 +1,6 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
+import io.smallrye.mutiny.Multi;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,21 +13,21 @@ import javax.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @ApplicationScoped
-// @Default
 public class RetrieveIMDBFileImpl implements RetrieveIMDBFile {
   private final RetrieveIMDBFileHttpClient httpClient;
 
   @Inject
-  @RestClient
   public RetrieveIMDBFileImpl(@RestClient RetrieveIMDBFileHttpClient httpClient) {
     this.httpClient = httpClient;
   }
 
   @Override
-  public Stream<String> retrieveFile(Type type) throws IOException {
-    InputStream stream = httpClient.getFile(type);
-    var uncompressedStream = new GZIPInputStream(stream);
-    return new BufferedReader(new InputStreamReader(uncompressedStream, StandardCharsets.UTF_8))
-        .lines();
+  public Multi<String> retrieveFile(Type type) throws IOException {
+    InputStream inputStream = httpClient.getFile(type.getFileName());
+    var uncompressedStream = new GZIPInputStream(inputStream);
+    Stream<String> lineStream =
+        new BufferedReader(new InputStreamReader(uncompressedStream, StandardCharsets.UTF_8))
+            .lines();
+    return Multi.createFrom().items(lineStream);
   }
 }

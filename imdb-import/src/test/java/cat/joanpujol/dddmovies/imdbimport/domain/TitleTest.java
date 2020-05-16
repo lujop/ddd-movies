@@ -24,8 +24,8 @@ class TitleTest {
             new TitleName("Pulp Fiction"),
             Adult.ADULT,
             Year.of(1994),
-            new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)),
             Genres.of("Crime", "Drama"));
+    pulpFiction.setRuntimeDuration(new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)));
   }
 
   @AfterEach

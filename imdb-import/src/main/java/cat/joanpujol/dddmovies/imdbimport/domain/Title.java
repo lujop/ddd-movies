@@ -1,5 +1,6 @@
 package cat.joanpujol.dddmovies.imdbimport.domain;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import java.time.Year;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -10,7 +11,7 @@ public final class Title extends BaseEntity {
   private Adult adult;
   private Year startYear;
   private @Nullable Year endYear;
-  private RuntimeDuration runtimeDuration;
+  private @Nullable RuntimeDuration runtimeDuration;
   private Genres genres;
 
   public Title(
@@ -19,7 +20,6 @@ public final class Title extends BaseEntity {
       TitleName originalTitle,
       Adult adult,
       Year startYear,
-      RuntimeDuration runtimeDuration,
       Genres genres) {
     super(id);
     this.mainTitle = mainTitle;
@@ -50,7 +50,7 @@ public final class Title extends BaseEntity {
     return endYear;
   }
 
-  public RuntimeDuration getRuntimeDuration() {
+  public @Nullable RuntimeDuration getRuntimeDuration() {
     return runtimeDuration;
   }
 
@@ -80,7 +80,7 @@ public final class Title extends BaseEntity {
     this.endYear = endYear;
   }
 
-  public void setRuntimeDuration(RuntimeDuration runtimeDuration) {
+  public void setRuntimeDuration(@Nullable RuntimeDuration runtimeDuration) {
     this.runtimeDuration = runtimeDuration;
   }
 
@@ -90,5 +90,13 @@ public final class Title extends BaseEntity {
 
   public Genres getGenres() {
     return genres;
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("id", getId())
+        .add("mainTitle", mainTitle)
+        .toString();
   }
 }

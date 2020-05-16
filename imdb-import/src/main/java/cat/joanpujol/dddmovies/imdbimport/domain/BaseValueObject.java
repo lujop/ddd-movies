@@ -19,4 +19,9 @@ public abstract class BaseValueObject implements ValueObject {
   }
 
   public abstract Object[] getEqualityValues();
+
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + Arrays.toString(getEqualityValues());
+  }
 }

@@ -18,7 +18,7 @@ class IMDBRetrieverTest {
   private void setup() {
     RetrieveIMDBFileImpl retrieveFileMocked =
         new RetrieveIMDBFileImpl(new RetrieveIMDBFileHttpClientMock());
-    retriever = new IMDBRetriever(retrieveFileMocked);
+    retriever = new IMDBRetriever(retrieveFileMocked, -1);
   }
 
   @AfterEach
@@ -32,7 +32,7 @@ class IMDBRetrieverTest {
     @Test
     void retrieveTitleBasics() throws IOException {
       var retrievedStream = retriever.retrieveTitleBasics();
-      assertThat(retrievedStream)
+      assertThat(retrievedStream.getData().collectItems().asList().await().indefinitely())
           .usingElementComparatorOnFields("id")
           .containsExactly(
               createTitleBasicsWithId("tt0000001"),
