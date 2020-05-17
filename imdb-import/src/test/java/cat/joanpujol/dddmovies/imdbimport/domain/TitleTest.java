@@ -12,12 +12,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class TitleTest {
+public class TitleTest {
   private Title pulpFiction;
 
   @BeforeEach
   public void setup() {
-    pulpFiction =
+    pulpFiction = createSampleTitle();
+  }
+
+  public static Title createSampleTitle() {
+    Title title =
         new Title(
             new Id("t1"),
             new TitleName("Pulp Fiction"),
@@ -25,7 +29,9 @@ class TitleTest {
             Adult.ADULT,
             Year.of(1994),
             Genres.of("Crime", "Drama"));
-    pulpFiction.setRuntimeDuration(new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)));
+
+    title.setRuntimeDuration(new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)));
+    return title;
   }
 
   @AfterEach
