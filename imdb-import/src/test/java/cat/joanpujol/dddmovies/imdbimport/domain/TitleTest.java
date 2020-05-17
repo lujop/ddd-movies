@@ -3,9 +3,7 @@ package cat.joanpujol.dddmovies.imdbimport.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import java.time.Duration;
 import java.time.Year;
-import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,21 +15,7 @@ public class TitleTest {
 
   @BeforeEach
   public void setup() {
-    pulpFiction = createSampleTitle();
-  }
-
-  public static Title createSampleTitle() {
-    Title title =
-        new Title(
-            new Id("t1"),
-            new TitleName("Pulp Fiction"),
-            new TitleName("Pulp Fiction"),
-            Adult.ADULT,
-            Year.of(1994),
-            Genres.of("Crime", "Drama"));
-
-    title.setRuntimeDuration(new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)));
-    return title;
+    pulpFiction = CreateTestDomainObjects.createSampleTitleWithAllData();
   }
 
   @AfterEach
