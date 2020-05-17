@@ -40,6 +40,8 @@ subprojects {
     dependencies {
         testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.15.1'
 
+        implementation 'org.slf4j:slf4j-api:1.7.30'
+
         checkerFramework 'org.checkerframework:checker:3.3.0'
         implementation 'org.checkerframework:checker-qual:3.3.0'
     }
@@ -59,6 +61,7 @@ subprojects {
         extraJavacArgs = [
                 '-Werror',
                 '-AsuppressWarnings=uninitialized',
+                '-AskipUses=org.slf4j.Logger',
                 '-AskipDefs=Test$' //Dont check tests
         ]
     }

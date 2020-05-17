@@ -29,6 +29,7 @@ public interface TitleBasic {
   @Nullable
   Integer endYear();
 
+  @Nullable
   Integer runtimeMinutes();
 
   Set<String> genres();

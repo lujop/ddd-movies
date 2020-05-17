@@ -1,6 +1,7 @@
 package cat.joanpujol.dddmovies.imdbimport.application.common;
 
 import java.util.List;
+import javax.annotation.Nullable;
 import org.immutables.value.Value;
 
 @Value.Immutable
@@ -9,6 +10,7 @@ public interface Response<T> {
   boolean isCorrect();
 
   @Value.Parameter(order = 2)
+  @Nullable
   T content();
 
   List<Message> messages();
@@ -17,11 +19,11 @@ public interface Response<T> {
     return ImmutableResponse.builder();
   }
 
-  public static <T> Response<T> of(boolean correct, T content) {
+  public static <T> Response<T> of(boolean correct, @Nullable T content) {
     return ImmutableResponse.of(correct, content);
   }
 
-  public static <T> Response<T> of(boolean correct, T content, Message message) {
+  public static <T> Response<T> of(boolean correct, @Nullable T content, Message message) {
     return ImmutableResponse.<T>builder()
         .isCorrect(correct)
         .content(content)
@@ -29,7 +31,7 @@ public interface Response<T> {
         .build();
   }
 
-  public static <T> Response<T> of(boolean correct, T content, String message) {
+  public static <T> Response<T> of(boolean correct, @Nullable T content, String message) {
     return ImmutableResponse.<T>builder()
         .isCorrect(correct)
         .content(content)

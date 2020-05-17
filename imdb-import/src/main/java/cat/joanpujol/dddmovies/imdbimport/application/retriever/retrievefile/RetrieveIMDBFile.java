@@ -1,11 +1,11 @@
 package cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile;
 
+import io.smallrye.mutiny.Multi;
 import java.io.IOException;
-import java.util.stream.Stream;
 
 public interface RetrieveIMDBFile {
   /** Returns a line stream with the content of the given file type */
-  Stream<String> retrieveFile(Type type) throws IOException;
+  Multi<String> retrieveFile(Type type) throws IOException;
 
   /** Types of data files provided by IMDB (https://www.imdb.com/interfaces/) */
   enum Type {

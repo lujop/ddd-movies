@@ -3,9 +3,19 @@ plugins {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-mutiny'
+
+
+    implementation 'io.quarkus:quarkus-smallrye-openapi';
     implementation 'io.quarkus:quarkus-smallrye-metrics'
     implementation 'io.quarkus:quarkus-smallrye-health'
     implementation 'io.quarkus:quarkus-smallrye-opentracing'
+    implementation 'io.quarkus:quarkus-rest-client'
+
+    implementation 'io.quarkus:quarkus-mongodb-client'
+    implementation 'io.quarkus:quarkus-mongodb-panache'
+
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
 
     implementation 'org.immutables:value:2.8.2'
@@ -14,4 +24,7 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
 
     testImplementation 'io.quarkus:quarkus-junit5'
+    //testImplementation 'io.quarkus:quarkus-junit5-mockito'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+
 }

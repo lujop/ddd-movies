@@ -38,25 +38,34 @@ class IMDBLineParser {
       if (value != null) return value;
       else
         throw new InvalidDataException(
-            String.format("Error parsing column %d as non blank string", column));
+            String.format(
+                "Error parsing column %d as non blank string. line=[%s]",
+                column, Arrays.toString(line)));
     }
 
     public @Nullable String getNullableString(int column) {
-      if (column >= line.length)
+      if (column >= line.length) {
         throw new InvalidDataException(
-            "Line doesn't have " + column + " columns. Line is " + Arrays.toString(line));
+            String.format(
+                "Line doesn't have %d columns. line=[%s]", column, Arrays.toString(line)));
+      }
       var value = line[column];
 
-      if (!value.isBlank() && !"\\N".equals(value)) return value;
-      else return null;
+      if (!value.isBlank() && !"\\N".equals(value)) {
+        return value;
+      } else return null;
     }
 
     public Integer getInteger(int column) {
       var value = getNullableInteger(column);
-      if (value != null) return value;
-      else
+      if (value != null) {
+        return value;
+      } else {
         throw new InvalidDataException(
-            String.format("Error parsing column %d as non blank number", column));
+            String.format(
+                "Error parsing column %d as non blank number. line=[%s]",
+                column, Arrays.toString(line)));
+      }
     }
 
     public Boolean getBoolean(int column) {
@@ -65,7 +74,9 @@ class IMDBLineParser {
         return value.equals("1");
       } else {
         throw new InvalidDataException(
-            String.format("Error parsing column %d as non blank boolean", column));
+            String.format(
+                "Error parsing column %d as non blank boolean. line=[%s]",
+                column, Arrays.toString(line)));
       }
     }
 
@@ -76,7 +87,10 @@ class IMDBLineParser {
           return Integer.parseInt(value);
         } catch (NumberFormatException e) {
           throw new InvalidDataException(
-              String.format("Error parsing column %d as number. Value is %s", column, value), e);
+              String.format(
+                  "Error parsing column %d as number. value is %s. line=[%s]",
+                  column, value, Arrays.toString(line)),
+              e);
         }
       } else {
         return null;
@@ -84,11 +98,15 @@ class IMDBLineParser {
     }
 
     public Set<String> getStringCommaSeparatedSet(int column) {
-      var value = getString(column);
-      String[] values = value.split(",", -1);
-      var set = new LinkedHashSet<String>();
-      Collections.addAll(set, values);
-      return set;
+      var value = getNullableString(column);
+      if (value != null) {
+        String[] values = value.split(",", -1);
+        var set = new LinkedHashSet<String>();
+        Collections.addAll(set, values);
+        return set;
+      } else {
+        return Collections.emptySet();
+      }
     }
 
     public int size() {

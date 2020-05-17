@@ -26,7 +26,9 @@ class RetrieveIMDBFileImplTest {
     @Test
     public void testSomeContentIsReturned() throws IOException {
       var content = instance.retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS);
-      assertThat(content).isNotEmpty().as("Retrieved file must have lines");
+      assertThat(content.collectItems().asList().await().indefinitely())
+          .isNotEmpty()
+          .as("Retrieved file must have lines");
     }
   }
 }
