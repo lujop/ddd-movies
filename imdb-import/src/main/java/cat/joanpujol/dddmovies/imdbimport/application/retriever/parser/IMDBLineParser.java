@@ -63,7 +63,19 @@ class IMDBLineParser {
       } else {
         throw new InvalidDataException(
             String.format(
-                "Error parsing column %d as non blank number. line=[%s]",
+                "Error parsing column %d as non blank integer. line=[%s]",
+                column, Arrays.toString(line)));
+      }
+    }
+
+    public Double getDouble(int column) {
+      var value = getNullableDouble(column);
+      if (value != null) {
+        return value;
+      } else {
+        throw new InvalidDataException(
+            String.format(
+                "Error parsing column %d as non blank double. line=[%s]",
                 column, Arrays.toString(line)));
       }
     }
@@ -88,7 +100,24 @@ class IMDBLineParser {
         } catch (NumberFormatException e) {
           throw new InvalidDataException(
               String.format(
-                  "Error parsing column %d as number. value is %s. line=[%s]",
+                  "Error parsing column %d as an integer. value is %s. line=[%s]",
+                  column, value, Arrays.toString(line)),
+              e);
+        }
+      } else {
+        return null;
+      }
+    }
+
+    public @Nullable Double getNullableDouble(int column) {
+      var value = getNullableString(column);
+      if (value != null) {
+        try {
+          return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+          throw new InvalidDataException(
+              String.format(
+                  "Error parsing column %d as a double. value is %s. line=[%s]",
                   column, value, Arrays.toString(line)),
               e);
         }

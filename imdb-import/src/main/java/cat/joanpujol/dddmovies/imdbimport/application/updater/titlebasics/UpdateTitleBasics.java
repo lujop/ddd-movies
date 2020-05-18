@@ -26,7 +26,7 @@ public class UpdateTitleBasics {
     this.titleBasicMapper = mapper;
   }
 
-  public Response<Void> update(UpdateTitleBasicsRequest request) throws IOException {
+  public Response<Void> update() throws IOException {
     logger.info("Start TitleBasics update");
     var retrieveOperation = imdbRetriever.retrieveTitleBasics();
     retrieveOperation

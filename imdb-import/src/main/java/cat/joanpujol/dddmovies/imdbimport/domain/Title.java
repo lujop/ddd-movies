@@ -13,6 +13,7 @@ public final class Title extends BaseEntity {
   private @Nullable Year endYear;
   private @Nullable RuntimeDuration runtimeDuration;
   private Genres genres;
+  private Rating rating = Rating.NO_RATING;
 
   public Title(
       Id id,
@@ -89,6 +90,14 @@ public final class Title extends BaseEntity {
 
   public Genres getGenres() {
     return genres;
+  }
+
+  public Rating getRating() {
+    return rating;
+  }
+
+  public void setRating(Rating rating) {
+    this.rating = rating;
   }
 
   @Override

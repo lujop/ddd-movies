@@ -6,11 +6,14 @@ import cat.joanpujol.dddmovies.imdbimport.domain.repository.TitleRepository;
 import cat.joanpujol.dddmovies.imdbimport.infrastructure.entities.TitleEntity;
 import cat.joanpujol.dddmovies.imdbimport.infrastructure.entities.mappers.TitleEntityMapper;
 import io.quarkus.mongodb.panache.PanacheMongoRepository;
+import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
+import org.bson.types.ObjectId;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class TitleMongoRepository implements TitleRepository, PanacheMongoRepository<TitleEntity> {
+public class TitleMongoRepository implements TitleRepository, PanacheMongoRepositoryBase<TitleEntity,String> {
   private final TitleEntityMapper titleEntityMapper;
 
   @Inject
@@ -20,7 +23,7 @@ public class TitleMongoRepository implements TitleRepository, PanacheMongoReposi
 
   @Override
   public Title findById(Id id) {
-    TitleEntity entity = find("id", id).firstResult();
+    TitleEntity entity = findById(id.getValue());
     return titleEntityMapper.toDomain(entity);
   }
 
