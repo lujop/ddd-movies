@@ -34,8 +34,9 @@ public class UpdateTitleRatings {
     retrieveOperation
         .getData()
         .subscribe()
-        .with(titleRating -> updateTitleWithRating(titleRating, updated),
-                error-> logger.error("Error updating ratings",error));
+        .with(
+            titleRating -> updateTitleWithRating(titleRating, updated),
+            error -> logger.error("Error updating ratings", error));
 
     logger.info(
         "End TitleRatings update. Updated {}. Retrieved correct registers: {} Incorrect registers: {}",
@@ -54,7 +55,7 @@ public class UpdateTitleRatings {
       logger.debug("Persisting rates for {}", title);
       updateCount.incrementAndGet();
     } else {
-      logger.warn("Ignoring rating for {} because id not found", titleRating.id());
+      logger.warn("Ignoring rating for {} because id not found", titleRating);
     }
   }
 }
