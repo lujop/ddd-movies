@@ -5,12 +5,14 @@ import cat.joanpujol.dddmovies.imdbimport.domain.Title;
 import cat.joanpujol.dddmovies.imdbimport.domain.repository.TitleRepository;
 import cat.joanpujol.dddmovies.imdbimport.infrastructure.entities.TitleEntity;
 import cat.joanpujol.dddmovies.imdbimport.infrastructure.entities.mappers.TitleEntityMapper;
-import io.quarkus.mongodb.panache.PanacheMongoRepository;
+import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 @ApplicationScoped
-public class TitleMongoRepository implements TitleRepository, PanacheMongoRepository<TitleEntity> {
+public class TitleMongoRepository
+    implements TitleRepository, PanacheMongoRepositoryBase<TitleEntity, String> {
   private final TitleEntityMapper titleEntityMapper;
 
   @Inject
@@ -19,8 +21,8 @@ public class TitleMongoRepository implements TitleRepository, PanacheMongoReposi
   }
 
   @Override
-  public Title findById(Id id) {
-    TitleEntity entity = find("id", id).firstResult();
+  public @Nullable Title findById(Id id) {
+    TitleEntity entity = findById(id.getValue());
     return titleEntityMapper.toDomain(entity);
   }
 

@@ -27,6 +27,8 @@ public class TitleEntityMapper {
       entity.setRuntimeDuration((int) runtimeDuration.getDuration().toMinutes());
     }
     entity.setGenres(genresToEntity(title.getGenres()));
+    entity.setNumberOfVotes(title.getRating().getNumberOfVotes());
+    entity.setAverageRating(title.getRating().getAverageRating());
     return entity;
   }
 
@@ -52,6 +54,7 @@ public class TitleEntityMapper {
       title.setRuntimeDuration(
           new RuntimeDuration(Duration.of(runtimeDuration, ChronoUnit.MINUTES)));
     }
+    title.setRating(new Rating(entity.getAverageRating(), entity.getNumberOfVotes()));
     return title;
   }
 }

@@ -14,6 +14,8 @@ public class TitleEntity {
   private @Nullable Integer endYear;
   private @Nullable Integer runtimeDuration;
   private List<String> genres = new ArrayList<>();
+  private double averageRating;
+  private int numberOfVotes;
 
   public String getId() {
     return id;
@@ -77,5 +79,21 @@ public class TitleEntity {
 
   public void setGenres(List<String> genres) {
     this.genres = genres;
+  }
+
+  public double getAverageRating() {
+    return averageRating;
+  }
+
+  public void setAverageRating(double averageRating) {
+    this.averageRating = averageRating;
+  }
+
+  public int getNumberOfVotes() {
+    return numberOfVotes;
+  }
+
+  public void setNumberOfVotes(int numberOfVotes) {
+    this.numberOfVotes = numberOfVotes;
   }
 }

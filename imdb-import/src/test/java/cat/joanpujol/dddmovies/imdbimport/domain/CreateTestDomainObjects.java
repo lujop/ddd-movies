@@ -24,6 +24,7 @@ public class CreateTestDomainObjects {
 
     title.setRuntimeDuration(new RuntimeDuration(Duration.of(154, ChronoUnit.MINUTES)));
     title.setEndYear(Year.of(1994));
+    title.setRating(new Rating(10.0, 1000));
     return title;
   }
 

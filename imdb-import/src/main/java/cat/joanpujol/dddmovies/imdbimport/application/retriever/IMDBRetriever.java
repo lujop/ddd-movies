@@ -2,8 +2,10 @@ package cat.joanpujol.dddmovies.imdbimport.application.retriever;
 
 import cat.joanpujol.dddmovies.imdbimport.application.error.InvalidDataException;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.TitleBasic;
+import cat.joanpujol.dddmovies.imdbimport.application.retriever.beans.TitleRatings;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.parser.IMDBParser;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.parser.TitleBasicParser;
+import cat.joanpujol.dddmovies.imdbimport.application.retriever.parser.TitleRatingsParser;
 import cat.joanpujol.dddmovies.imdbimport.application.retriever.retrievefile.RetrieveIMDBFile;
 import io.smallrye.mutiny.Multi;
 import java.io.IOException;
@@ -32,18 +34,23 @@ public class IMDBRetriever {
   }
 
   public IMDBRetrieveOperation<TitleBasic> retrieveTitleBasics() throws IOException {
+    return retrieve(RetrieveIMDBFile.Type.TITLE_BASICS, new TitleBasicParser());
+  }
+
+  public IMDBRetrieveOperation<TitleRatings> retrieveTitleRatings() throws IOException {
+    return retrieve(RetrieveIMDBFile.Type.TITLE_RATINGS, new TitleRatingsParser());
+  }
+
+  private <Type> IMDBRetrieveOperation<Type> retrieve(
+      RetrieveIMDBFile.Type type, IMDBParser<Type> parser) throws IOException {
     Multi<String> lineStream =
-        retrieveFile
-            .retrieveFile(RetrieveIMDBFile.Type.TITLE_BASICS)
-            .transform()
-            .bySkippingFirstItems(1); // Ignore file header
+        retrieveFile.retrieveFile(type).transform().bySkippingFirstItems(1); // Ignore file header
 
     if (maxNumberOfRegisters != -1) {
       logger.info("Taking only first {} registers", maxNumberOfRegisters);
       lineStream = lineStream.transform().byTakingFirstItems(maxNumberOfRegisters);
     }
 
-    TitleBasicParser parser = new TitleBasicParser();
     return new IMDBRetrieveOperation<>(lineStream, parser);
   }
 

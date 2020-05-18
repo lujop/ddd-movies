@@ -4,6 +4,7 @@ import cat.joanpujol.dddmovies.imdbimport.infrastructure.entities.TitleEntity;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Indexes;
+import io.quarkus.runtime.Startup;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
+@Startup
 public class ConfigureMongoDB {
   private static final Logger logger = LoggerFactory.getLogger(ConfigureMongoDB.class);
 
@@ -29,9 +31,10 @@ public class ConfigureMongoDB {
   public void configure() {
     MongoDatabase database = client.getDatabase(databaseName);
     String collectionName = TitleEntity.class.getSimpleName();
-    database.getCollection(collectionName).createIndex(Indexes.text("mainTitle"));
-    database.getCollection(collectionName).createIndex(Indexes.text("originalTitle"));
-
+    database
+        .getCollection(collectionName)
+        .createIndex(
+            Indexes.compoundIndex(Indexes.text("mainTitle"), Indexes.text("originalTitle")));
     logger.info("MongoDB configured");
   }
 }
