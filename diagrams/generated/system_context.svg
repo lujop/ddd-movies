@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="619px" preserveAspectRatio="none" style="width:570px;height:619px;" version="1.1" viewBox="0 0 570 619" width="570px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="347" x="123.5" y="17.4023">System context diagram for DDDMovies</text><!--MD5=[a6327fbf02f41d1072347f46f6d9818e]
+cluster c0--><rect fill="#FFFFFF" height="563" style="stroke: #444444; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="240" x="319.5" y="45.1992"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="80" x="399.5" y="60.7344">«boundary»</text><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="33" x="423" y="79.1563">TVX</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="413" y="94.1328">[System]</text><!--MD5=[2cfb912aad8b87a99227794d2aa2b754]
+entity imdbImport--><rect fill="#1168BD" height="118.9297" style="stroke: #3C7FC0; stroke-width: 1.5;" width="184" x="347.5" y="113.1992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="413.5" y="134.8008">«system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="98" x="390.5" y="152.8008">IMDBImport</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="441.5" y="169.7109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="160" x="357.5" y="186.1992">Mantains a IMDB partial</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="127" x="374" y="202.6875">replica of rellevant</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="81" x="399" y="219.1758">information</text><!--MD5=[485d42c6b740ab5ea4e50a4a9ecb2d88]
+entity moviesApp--><rect fill="#1168BD" height="102.4414" style="stroke: #3C7FC0; stroke-width: 1.5;" width="208" x="335.5" y="301.6992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="413.5" y="323.3008">«system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="91" x="394" y="341.3008">MoviesApp</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="441.5" y="358.2109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="184" x="345.5" y="374.6992">TVX application to manage</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="172" x="353.5" y="391.1875">film rights and emissions</text><!--MD5=[ff5fb858ae897204923a89c01a84dca8]
+entity moviesPublicSite--><rect fill="#1168BD" height="118.9297" style="stroke: #3C7FC0; stroke-width: 1.5;" width="206" x="337.5" y="473.1992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="414.5" y="494.8008">«system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="137" x="372" y="512.8008">MoviesPublicSite</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="442.5" y="529.7109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="181" x="348" y="546.1992">TVX public site application</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="182" x="347.5" y="562.6875">with infomation about film</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="406.5" y="579.1758">emissions</text><!--MD5=[e281e7dad4848148e7e71bcf84293c5b]
+entity tvxEmployee--><rect fill="#08427B" height="118.9297" style="stroke: #073B6F; stroke-width: 1.5;" width="210" x="13.5" y="293.1992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="92.5" y="314.8008">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="117" x="60" y="332.8008">TVX Employee</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="120.5" y="349.7109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="186" x="23.5" y="366.1992">An employee that manages</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="179" x="27" y="382.6875">films rights and emissions</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="126" x="55.5" y="399.1758">for the TV channel</text><!--MD5=[a871b290a2e5ae9087886f6f9ff64ac3]
+entity tvxViewer--><rect fill="#08427B" height="85.9531" style="stroke: #073B6F; stroke-width: 1.5;" width="167" x="6" y="489.6992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="52" x="63.5" y="511.3008">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="43" y="529.3008">TVX Viewer</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="91.5" y="546.2109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="147" x="16" y="562.6992">A TVX channel viewer</text><!--MD5=[88451fc5c07e937b8e459c0b455b1547]
+entity imdb--><rect fill="#999999" height="85.9531" style="stroke: #8A8A8A; stroke-width: 1.5;" width="140" x="48.5" y="129.6992"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="66" y="151.3008">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="43" x="97" y="169.3008">IMDB</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="120.5" y="186.2109"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="120" x="58.5" y="202.6992">IMDB files dataset</text><!--MD5=[f76112f982f346d8b30733b7b0defd68]
+link imdbImport to imdb--><path d="M347.35,172.6992 C298.67,172.6992 239.69,172.6992 193.79,172.6992 " fill="none" id="imdbImport-&gt;imdb" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="188.55,172.6992,197.55,176.6992,193.55,172.6992,197.55,168.6992,188.55,172.6992" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="122" x="207" y="166.2676">imports data from</text><!--MD5=[c7cf1132a45804d521f0843acad0248a]
+link tvxViewer to moviesPublicSite--><path d="M173.13,532.6992 C220.76,532.6992 280.98,532.6992 332.2,532.6992 " fill="none" id="tvxViewer-&gt;moviesPublicSite" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="337.44,532.6992,328.44,528.6992,332.44,532.6992,328.44,536.6992,337.44,532.6992" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="128" x="191.25" y="526.2676">Search information</text><!--MD5=[a1ee9c523698c1411d71e84e20d422f4]
+link tvxEmployee to moviesApp--><path d="M223.61,352.6992 C257.77,352.6992 295.74,352.6992 330.2,352.6992 " fill="none" id="tvxEmployee-&gt;moviesApp" style="stroke: #666666; stroke-width: 1.0;"/><polygon fill="#666666" points="335.25,352.6992,326.25,348.6992,330.25,352.6992,326.25,356.6992,335.25,352.6992" style="stroke: #666666; stroke-width: 1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="54" x="252.5" y="346.2676">Manage</text><!--MD5=[8a91655d782e46414b8ea0609762d5c1]
+link imdbImport to moviesApp--><!--MD5=[32d1eea05fb74ee4aad7f8ae5e6982f7]
+link moviesApp to moviesPublicSite--><!--MD5=[4bd955004850a3f06cf8efd336c15131]
+link imdb to tvxEmployee--><!--MD5=[f3f97d96c6a77e44be4b5a0c77bf422e]
+link tvxEmployee to tvxViewer--><!--MD5=[b0adffe12eedd69030b8f14397601828]
+@startuml system_context
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Context.puml
+
+
+title System context diagram for DDDMovies
+
+Person(tvxEmployee, "TVX Employee" , "An employee that manages films rights and emissions for the TV channel")
+Person(tvxViewer, "TVX Viewer" , "A TVX channel viewer")
+System_Ext(imdb,"IMDB","IMDB files dataset")
+
+
+
+System_Boundary(c0, "TVX") {
+    System(imdbImport,"IMDBImport","Mantains a IMDB partial replica of rellevant information")
+    System(moviesApp,"MoviesApp","TVX application to manage film rights and emissions")
+    System(moviesPublicSite,"MoviesPublicSite","TVX public site application with infomation about film emissions")
+}
+
+
+Rel(imdbImport,imdb,"imports data from")
+
+Rel_R(tvxViewer,moviesPublicSite,"Search information")
+Rel_R(tvxEmployee,moviesApp,"Manage")
+
+'Rel_U(moviesApp,imdbImport,"Get movies data")
+'Rel_U(moviesPublicSite,moviesApp,"Uses (readonly)")
+
+Lay_D(imdbImport,moviesApp)
+Lay_D(moviesApp,moviesPublicSite)
+Lay_D(imdb,tvxEmployee)
+Lay_D(tvxEmployee,tvxViewer)
+
+@enduml
+
+@startuml system_context
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+title System context diagram for DDDMovies
+
+rectangle "==TVX Employee\n\n An employee that manages films rights and emissions for the TV channel" <<person>> as tvxEmployee
+rectangle "==TVX Viewer\n\n A TVX channel viewer" <<person>> as tvxViewer
+rectangle "==IMDB\n\n IMDB files dataset" <<external_system>> as imdb
+
+
+
+rectangle "==TVX\n<size:12>[System]</size>" <<boundary>> as c0 {
+    rectangle "==IMDBImport\n\n Mantains a IMDB partial replica of rellevant information" <<system>> as imdbImport
+    rectangle "==MoviesApp\n\n TVX application to manage film rights and emissions" <<system>> as moviesApp
+    rectangle "==MoviesPublicSite\n\n TVX public site application with infomation about film emissions" <<system>> as moviesPublicSite
+}
+
+
+imdbImport - -> imdb : "===imports data from"
+
+tvxViewer -RIGHT-> moviesPublicSite : "===Search information"
+tvxEmployee -RIGHT-> moviesApp : "===Manage"
+
+
+imdbImport -[hidden]D- moviesApp
+moviesApp -[hidden]D- moviesPublicSite
+imdb -[hidden]D- tvxEmployee
+tvxEmployee -[hidden]D- tvxViewer
+
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 11:35:57 CEST 2020)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 13.0.1+9
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: ES
+--></g></svg>

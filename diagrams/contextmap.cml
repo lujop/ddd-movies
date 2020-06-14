@@ -1,0 +1,25 @@
+/* Example Context Map written with 'ContextMapper DSL' */
+ContextMap DDDMoviesContextMap {
+	type = SYSTEM_LANDSCAPE
+	state = TO_BE
+	
+	/* Add bounded contexts to this context map: */
+	contains ImdbImportContext, MoviesAppContext, MoviesPublicSiteContext
+	
+	/* Define the context relationships: */ 
+
+    ImdbImportContext [U,OHS] -> [D,CF] MoviesAppContext {
+        implementationTechnology = "Pulsar topic"
+    }
+    MoviesAppContext [U,OHS] -> [D,CF] MoviesPublicSiteContext  {
+        implementationTechnology = "Pulsar topic"
+    }
+}
+
+/* Bounded Context Definitions */
+BoundedContext ImdbImportContext 
+BoundedContext MoviesAppContext 
+BoundedContext MoviesPublicSiteContext 
+
+
+

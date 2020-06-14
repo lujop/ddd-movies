@@ -1,0 +1,34 @@
+@startuml system_context
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Context.puml
+
+
+title System context diagram for DDDMovies
+
+Person(tvxEmployee, "TVX Employee" , "An employee that manages films rights and emissions for the TV channel")
+Person(tvxViewer, "TVX Viewer" , "A TVX channel viewer")
+System_Ext(imdb,"IMDB","IMDB files dataset")
+
+
+
+System_Boundary(c0, "TVX") {
+    System(imdbImport,"IMDBImport","Mantains a IMDB partial replica of rellevant information")
+    System(moviesApp,"MoviesApp","TVX application to manage film rights and emissions")
+    System(moviesPublicSite,"MoviesPublicSite","TVX public site application with infomation about film emissions")
+}
+
+
+Rel(imdbImport,imdb,"imports data from")
+
+Rel_R(tvxViewer,moviesPublicSite,"Search information")
+Rel_R(tvxEmployee,moviesApp,"Manage")
+
+'Rel_U(moviesApp,imdbImport,"Get movies data")
+'Rel_U(moviesPublicSite,moviesApp,"Uses (readonly)")
+
+Lay_D(imdbImport,moviesApp)
+Lay_D(moviesApp,moviesPublicSite)
+Lay_D(imdb,tvxEmployee)
+Lay_D(tvxEmployee,tvxViewer)
+
+@enduml
